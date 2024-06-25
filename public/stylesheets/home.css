@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;400;700;800&family=Inter:wght@100;400;700;900&display=swap');
+
+
+*{
+    box-sizing: border-box;
+}
+
+header,section{
+    overflow-x: hidden;
+}
+
+:root{
+    font-family: "Inter", sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-family: "Barlow";
+    --navbarcolor: #ffecab;
+    --footercolor : #2b2e7f;
+
+}
+
+header{
+    overflow: visible;
+}
+
+/** Section 1 (Selamat datang dll) Style**/
+
+
+.cover{
+    width: 100%;
+    height: 65vh;
+    background : url(/images/Kantor\ Lurah\ Fontein\ front.jpg);
+    background-size: cover;
+    position: relative;
+    color: white;
+}
+.cover .content{
+    background: rgba(61, 61, 61, 0.5);
+    height: 100%;
+    width: 100%;
+    padding-right: 1000vw;
+}
+.cover .content h1{
+    font-family: "Poppins";
+    font-size: 5vw;
+}
+.cover .content p{
+    font-family: "Inter";
+    padding-right: 20vw;
+}
+.container{
+    position: absolute;
+    bottom: 0;
+}
+.cover .content{
+    padding-left: 2vw;
+}
+
+/** -- STYLE KOTAK ANGKA STATS - RECTANGLE **/
+
+/**RECTANGLE 1-4**/
+.rectangle1, .rectangle2, .rectangle3, .rectangle4{
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+}
+.rectangle1:hover, .rectangle2:hover, .rectangle3:hover, .rectangle4:hover{
+  transform: scale(1.20);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.rectangle1, .rectangle2, .rectangle3, .rectangle4{
+    position:relative;
+    z-index: 1;
+    /* width: 20vw;
+    height: 20vh; */
+    padding-top: 4vmin;
+    margin: 1rem;
+    color : white;
+    margin: 25px;
+    border-radius:15px;
+}
+.numbers .rectangle1 i, .rectangle2 i, .rectangle3 i, .rectangle4 i {
+  position: absolute;
+  padding-right: 100px;
+}
+
+
+.rectangle1 .icons ,.rectangle2 .icons, .rectangle3 .icons, .rectangle4 .icons {
+    opacity: 0.5;
+    position: absolute;
+    left: 0;
+    top: 45px;
+    width: 45%;
+    height: auto;
+}
+.rectangle1{
+    background-color: rgb(23, 111, 199);
+    overflow: hidden;
+    position: relative;
+}
+.rectangle2{
+    background-color: olivedrab;
+    overflow: hidden;
+    position: relative;
+}
+.rectangle3{
+    background-color: rgb(198, 96, 13);
+    overflow: hidden;
+    position: relative;
+}
+.rectangle4{
+    background-color: darkred;
+    overflow: hidden;
+    position: relative;
+}
+.numbers.rectangle1 p, .numbers.rectangle2 p, .numbers.rectangle3 p, .numbers.rectangle4 p {
+    font-size: 22vw;
+}
+.rectangle1 p, .rectangle2 p, .rectangle3 p, .rectangle4 p{
+    padding-right: 1vw;
+    padding-bottom: 3vh;
+}
+.numbers .rectangle1 h1 , .rectangle2 h1, .rectangle3 h1, .rectangle4 h1{
+    font-size: 4.5vw;
+    padding-right: 18px;
+}
+
+
+/**RECTANGLE 5-7**/
+.rectangle5, .rectangle6, .rectangle7{
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+}
+.rectangle5:hover, .rectangle6:hover, .rectangle7:hover{
+  transform: scale(1.20);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.rectangle5, .rectangle6, .rectangle7{
+    position:relative;
+    z-index: 1;
+    /* width: 350px;
+    height: 20vh; */
+    padding-top: 4vmin;
+    margin: 1rem;
+    color : white;
+    margin: 25px;
+    border-radius:15px;
+}
+.numbers .rectangle5 i, .rectangle6 i, .rectangle7 i{
+  position: absolute;
+  padding-right: 100px;
+}
+
+
+.rectangle5 .icons ,.rectangle6 .icons, .rectangle7 .icons {
+    opacity: 0.5;
+    position: absolute;
+    left: 0;
+    top: 45px;
+    width: 45%;
+    height: auto;
+}
+.rectangle5{
+    background-color: rgb(78, 97, 115);
+    overflow: hidden;
+    position: relative;
+}
+.rectangle6{
+    background-color: rgb(15, 53, 109);
+    overflow: hidden;
+    position: relative;
+}
+.rectangle7{
+    background-color: rgb(157, 9, 86);
+    overflow: hidden;
+    position: relative;
+}
+
+.numbers.rectangle5 p, .numbers.rectangle6 p, .numbers.rectangle7 p {
+    font-size: 22vw;
+}
+.rectangle5 p, .rectangle6 p, .rectangle7 p{
+    padding-right: 1vw;
+    padding-bottom: 3vh;
+}
+.numbers .rectangle5 h1 , .rectangle6 h1, .rectangle7 h1{
+    font-size: 4.5vw;
+    padding-right: 18px;
+}
+
+/** STYLE PUBLIKASI - YG MMUAT DOK. **/
+
+
+section h3,h5{
+    padding-left: 50px;
+    padding-top: 30px;
+}
+
+.publikasi h3{
+    padding-left: 50px;
+    padding-top: 30px;
+}
+.publikasi input{
+    width: 300px;
+}
+.caripublikasi{
+    padding-right: 50px;
+}
+
+.publikasi .cards{
+    padding-top: 30px;
+}
+
+.publikasi .cards .card{
+    margin: 3vmin;
+}
+.publikasi .cards .card .btn {
+    background-color: #2b2e7f;
+    color : white;
+}
+
+.publikasi .cards .card .btn:hover {
+    background-color:#ffecab;
+    color :#2b2e7f;
+}
+
+section{
+    padding-bottom: 3vmin;
+}
+.tabel{
+    margin: 3vw;
+}

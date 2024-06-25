@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;400;700;800&family=Inter:wght@100;400;700;900&display=swap');
+
+
+*{
+    box-sizing: border-box;
+}
+
+header,section{
+    overflow-x: hidden;
+}
+
+:root{
+    font-family: "Inter", sans-serif;
+    font-family: "Barlow", sans-serif;
+
+
+
+    --navbarcolor: #ffecab;
+    --footercolor : #2b2e7f;
+
+}
+
+header{
+    overflow: visible;
+}
+
+.cover{
+
+    width: 100%;
+    height: 65vmin;
+    background : url(/images/Kantor\ Lurah\ Fontein.jpg);
+    background-size: cover;
+    position: relative;
+    color: white;
+}
+.coverstruktur{
+    width: 100%;
+    height: 65vmin;
+    background : url(/images/IMG-20220831-WA0036\ crop.jpg);
+    background-size:cover;
+    position: relative;
+    color: white;
+    object-fit:fill;
+    margin-top: 13vh;
+}
+
+.profilkelurahan   {
+    padding-top: 25px;
+    padding-left: 50px;
+    height:100%;
+    overflow-y: visible;
+    position: relative;
+    
+}
+/* .teksprofil{
+    padding-left: 20vmin;
+    padding-right: 20vmin;
+}
+.listprofil{
+    padding-left: 25vmin;
+    padding-right: 20vmin;
+} */
+/* h5{
+    padding-left: 20vmin;
+    padding-right: 20vmin;
+} */
+/* .fasilitas,.wisata{
+    padding-left: 20vmin;
+    padding-right: 20vmin;
+} */
+#carouselExampleCaptions .carousel-item img{
+    object-position: center;
+    overflow: hidden;
+    
+}
+#carouselExampleCaptions2 .carousel-item img{
+    object-position: center;
+    overflow: hidden;
+}
+.carousel-item img{
+    height: 70vmin;
+    object-fit:cover;
+    background: rgb(48, 47, 47);   
+}
+
+/*umkm*/
+
+
+    
+
+#carouselExampleCaptions, #carouselExampleCaptions2{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 70%;
+}
+#carouselExampleCaptions .carousel-caption{
+    color: white;
+    background-color: rgba(22, 22, 22, 0.553);
+    border-radius: 5px;
+}
+#carouselExampleCaptions2 .carousel-caption{
+    color: white;
+    background-color: rgba(22, 22, 22, 0.553);
+    border-radius: 5px;
+}
+
+
+/* .struktur{
+    height: 20vh
+} */
+
+.struktur {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  /* Then style the iframe to fit in the container div with full height and width */
+  .pdf {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 85%;
+    height: 85%;
+    margin: 0 auto;
+
+  }
+
+.data2{
+    height: 20em;
+}
+.petakelurahan{
+    padding-top: 25px;
+    padding-left: 50px;
+    padding-bottom: 20px;
+}

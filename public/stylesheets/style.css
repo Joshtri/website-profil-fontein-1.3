@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;400;700;800&family=Inter:wght@100;400;900&family=Poppins:wght@500&display=swap');
+*{
+    box-sizing: border-box;
+}
+html{
+    -webkit-transition: 0.7s;
+            transition: 0.7s;
+}
+
+header,section{
+    overflow-x: hidden;
+}
+
+:root{
+    font-family: "Inter", sans-serif;
+    font-family: "COCOGOOSE", sans-serif;
+    font-family: "Barlow";
+    --navbarcolor: #ffecab;
+    --footercolor : #2b2e7f;
+    --background-color: white;
+    --textcolor: black;
+    --bordercolor : rgb(41, 41, 41);
+    --navtoggler : url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>")
+}
+.darkmode, body, .navbar, footer{
+    -webkit-transition: 0.7s;
+            transition: 0.7s;
+}
+.darkmode{
+    --background-color : rgb(54, 53, 53);
+    --textcolor: white;
+    --bordercolor : rgb(175, 175, 175);
+    --navbarcolor :  rgb(46, 46, 46);
+    --footercolor :  rgb(27, 27, 27);
+    --navtoggler : url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba%28255, 255, 255, 15%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>")
+}
+body{
+    
+    background-color: var(--background-color);
+    color : var(--textcolor);
+}
+a{
+    text-decoration: none;
+    color: white
+}
+a:hover{
+    color: white;
+}
+.cards .card{
+    background-color: var(--background-color);
+    border-color: var(--bordercolor);
+}
+.caripublikasi #search{
+    background-color: var(--background-color);
+}
+.table{
+    color: var(--textcolor);
+    border-collapse: collapse;
+    border-radius: 3px;
+    overflow:visible;
+    
+}
+.table th{
+    background-color:var(--footercolor);
+    color: white;
+}
+.tabel{
+    margin: 3vw;
+    
+    
+    
+}
+.modal-content{
+    color: var(--textcolor);
+    background-color: var(--background-color);
+ }
+ .card{
+    background-color: var(--background-color);
+    color: var(--textcolor);
+}
+.btn-primary{
+    background-color: var(--footercolor);
+    border: var(--footercolor);
+}
+
+.buttondata {
+    padding-left: 4vw;
+    padding-top: 50px;
+    color: white;
+    padding-right: 4vw;  
+}
+.buttondata .btn{
+    color: white;
+    background-color: var(--footercolor);
+}
+/** HEADER Style**/
+
+header .navbar-placeholder{
+    overflow: visible;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    
+}
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    background-image: var(--navtoggler);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.navbar button{
+    color : var(--bordercolor)
+}
+.navbar-nav .nav-link{
+    color: var(--textcolor);
+}
+.navbar-nav a:hover{
+    font-weight: bold;
+}
+header{
+    z-index: 1000;
+    position: relative;
+    overflow: visible;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+}
+.navbar{
+    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+ul.navbar-nav{
+    font-family: "Barlow";
+}
+li.nav-item:last-child{
+    padding-right: 50px;
+}
+li.nav-item{
+    padding: 0.5em;
+}
+ul img{
+  position: relative;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  vertical-align: top;
+  top: 2px;
+}
+a.nav-link active{
+    font-family: "Barlow-Bold";
+}
+a.navbar-brand{
+    padding-left: 25px;
+}
+ul.dropdown-menu{
+    background-color: var(--background-color);
+    
+}
+ul.dropdown-menu a{
+    color: var(--textcolor);
+}
+ul .dropdown-menu a:hover{
+    background-color: #2b2e7f;
+    color : white;
+}
+
+a.navbar-brand img{
+    -webkit-transition: 1s;
+            transition: 1s;
+    max-width: 100%;
+    height: auto;
+}
+
+.sticky{
+    position:fixed;
+    top:0;
+    width: 100%;
+    background: var(--navbarcolor);
+    z-index : 9999;
+    color: var(--textcolor);
+    
+}
+
+ main{
+    height:100%;
+    overflow: hidden;
+    margin-bottom: 30px;
+ }
+
+
+
+/**  FOOTER Style**/
+
+footer{
+    
+    background: var(--footercolor);
+    color : white;
+    overflow-x: hidden;
+    padding: 8vmin 8vmin;
+    padding-top: 2em;
+
+    
+}
+footer p{
+    padding-left: 8px;
+    padding-top: 2px;
+}
+footer h5{
+    font-family: "Barlow";
+    text-align: center;
+    padding-left: 0;
+}
+footer i {
+    padding: 5px;
+    
+}
+i{
+    padding: 20px;
+}
+footer img{
+    padding: 5px;
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+
+}
+footer img:hover{
+    transform: scale(1.20);
+}
+
+                
