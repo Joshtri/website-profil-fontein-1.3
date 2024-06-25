@@ -16,4 +16,10 @@ router.get('/visi_misi', mainController.visiMisiPage);
 
 
 
+
+// router.get('/main_stats');
+
+
+
+
 export default router;

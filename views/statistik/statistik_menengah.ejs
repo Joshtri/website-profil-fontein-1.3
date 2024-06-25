@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/home-mobile-style.css">
+    <link rel="stylesheet" href="/stylesheets/profil.css">
+    <link rel="icon" type="image/x-icon" href="/images/489px-LOGO_KOTA_KUPANG (1 300x300).png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <header id="navbar-placeholder">
+        <%- include('partials/header'); -%>
+    </header>     
+    
+    <main>
+        <section class="section-1 container-fluid p-0">
+            <div style="height: 100px;"></div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <%-include('partials/stats_option'); %>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                    <br><br>
+                    <h3 style="text-align: center;">Data Usaha Menengah</h3> 
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Statistik UMKM</h5>
+                            <div style="width: 80%; margin: 0 auto;">
+                                <canvas id="kbliChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        // Pindahkan deklarasi chartRendered ke luar dari blok DOMContentLoaded
+                        let chartRendered = false;
+
+                        document.addEventListener('DOMContentLoaded', async () => {
+                            try {
+                                if (!chartRendered) {
+                                    const response = await axios.get('/count_kbli_by_umkm'); // Ganti dengan endpoint sesuai server Anda
+                                    const data = response.data.slice(0, 5); // Batasi hanya 5 data
+
+                                    // Persiapan data untuk Chart.js
+                                    const labels = data.map(item => item.kbli_keterangan);
+                                    const counts = data.map(item => item.count);
+
+                                    // Membuat Chart menggunakan Chart.js
+                                    const ctx = document.getElementById('kbliChart').getContext('2d');
+                                    new Chart(ctx, {
+                                        type: 'doughnut', // Menggunakan type doughnut untuk doughnut chart
+                                        data: {
+                                            labels: labels,
+                                            datasets: [{
+                                                label: 'Jumlah UMKM berdasarkan KBLI',
+                                                data: counts,
+                                                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'], // Warna background bisa disesuaikan
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            responsive: true,
+                                            maintainAspectRatio: false,
+                                            plugins: {
+                                                legend: {
+                                                    position: 'top', // Atur posisi legenda (top, bottom, left, right)
+                                                },
+                                                tooltip: {
+                                                    callbacks: {
+                                                        label: function(tooltipItem) {
+                                                            return `${tooltipItem.label}: ${tooltipItem.raw}`;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
+
+                                    chartRendered = true; // Setelah dirender, tandai bahwa chart sudah selesai
+                                }
+                            } catch (error) {
+                                console.error('Error fetching KBLI data:', error);
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="tabel">
+                <table id="dtHorizontalVerticalExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">No</th>
+                            <th scope="col" class="text-center">Nama Usaha</th>
+                            <th scope="col" class="text-center">Alamat Tempat Usaha</th>
+                            <th scope="col" class="text-center">Nama Pemilik</th>
+                            <th scope="col" class="text-center">Jenis Pengelolaan Usaha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i = 0; i < umkmDataMenengah.length; i++) { %>
+                            <tr>
+                                <td scope="row" class="text-center"><%= i + 1 %></td>
+                                <td scope="row" class="text-center"><%= umkmDataMenengah[i].nama_usaha %></td>
+                                <td scope="row" class="text-center"><%= umkmDataMenengah[i].alamat_tempat_usaha %></td>
+                                <td scope="row" class="text-center"><%= umkmDataMenengah[i].nama_pemilik.nama_penduduk %></td>
+                                <td scope="row" class="text-center"><%= umkmDataMenengah[i].jenis_pengelolaan_usaha %></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        $(document).ready(function () {
+            $('#dtHorizontalVerticalExample').DataTable({
+                "scrollX": true,
+                "scrollY": 200,
+            });
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="/javascripts/document.js"></script>
+    <script src="/javascripts/darkmode.js"></script>
+
+    <footer id="footer-placeholder">
+        <%-include('partials/footer'); -%>
+    </footer>
+</body>
+</html>

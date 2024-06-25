@@ -35,7 +35,7 @@
 @media  screen and (min-width : 769px){
     .rectangle1, .rectangle2, .rectangle3, .rectangle4{
         width: 20vw;
-        height: 20vh;
+        height: 23vh;
     }
 }
 
@@ -99,7 +99,7 @@
 @media  screen and (min-width : 769px){
     .rectangle5, .rectangle6, .rectangle7{
         width: 20vw;
-        height: 20vh;
+        height: 23vh;
     }
 }
 

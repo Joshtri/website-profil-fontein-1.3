@@ -1,4 +1,5 @@
-
+import * as umkmServices from '../repositories/umkm.repository.js';
+import * as pendudukServices from '../repositories/penduduk.repository.js';
 
 
 //beranda
@@ -6,9 +7,25 @@ export const mainPage = async(req,res)=>{
 
     const title = "Beranda";
 
+    const totalUmkm = await umkmServices.getTotalUmkm();
+    const totalPenduduk = await pendudukServices.getTotalPenduduk();
+    const totalLakiLaki = await pendudukServices.getTotalPendudukLakiLaki();
+    const totalPerempuan = await pendudukServices.getTotalPendudukPerempuan();
+
+    const totalMenengah = await umkmServices.getTotalUmkmMenengah();
+    const totalMikro = await umkmServices.getTotalUmkmMikro();
+    const totalKecil = await umkmServices.getTotalUmkmKecil();
+
     try {
         res.render('index',{
-            title
+            title,
+            totalUmkm,
+            totalPenduduk,
+            totalLakiLaki,
+            totalPerempuan,
+            totalMenengah,
+            totalMikro,
+            totalKecil
         });
     } catch (error) {
         console.log(error);
