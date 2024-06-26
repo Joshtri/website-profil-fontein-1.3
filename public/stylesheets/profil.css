@@ -28,7 +28,7 @@ header{
 
     width: 100%;
     height: 65vmin;
-    background : url(/images/Kantor\ Lurah\ Fontein.jpg);
+    background : url(/images/Kantor\ Lurah\ Fontein.webp);
     background-size: cover;
     position: relative;
     color: white;
@@ -36,7 +36,7 @@ header{
 .coverstruktur{
     width: 100%;
     height: 65vmin;
-    background : url(/images/IMG-20220831-WA0036\ crop.jpg);
+    background : url(/images/IMG-20220831-WA0036\ crop.webp);
     background-size:cover;
     position: relative;
     color: white;
