@@ -10,9 +10,9 @@ export const mainPage = async(req,res)=>{
     const title = "Beranda";
 
     const totalUmkm = await umkmServices.getTotalUmkm();
-    const totalPenduduk = await pendudukServices.getTotalPenduduk();
-    const totalLakiLaki = await pendudukServices.getTotalPendudukLakiLaki();
-    const totalPerempuan = await pendudukServices.getTotalPendudukPerempuan();
+    // const totalPenduduk = await pendudukServices.getTotalPenduduk();
+    // const totalLakiLaki = await pendudukServices.getTotalPendudukLakiLaki();
+    // const totalPerempuan = await pendudukServices.getTotalPendudukPerempuan();
 
     const totalMenengah = await umkmServices.getTotalUmkmMenengah();
     const totalMikro = await umkmServices.getTotalUmkmMikro();
@@ -24,9 +24,9 @@ export const mainPage = async(req,res)=>{
         res.render('index',{
             title,
             totalUmkm,
-            totalPenduduk,
-            totalLakiLaki,
-            totalPerempuan,
+            // totalPenduduk,
+            // totalLakiLaki,
+            // totalPerempuan,
             totalMenengah,
             totalMikro,
             totalKecil,
