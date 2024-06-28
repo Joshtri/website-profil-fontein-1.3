@@ -52,7 +52,7 @@
                             try {
                                 if (!chartRendered) {
                                     const response = await axios.get('/count_kbli_by_umkm'); // Ganti dengan endpoint sesuai server Anda
-                                    const data = response.data.slice(0, 5); // Batasi hanya 5 data
+                                    const data = response.data.slice(0, 8); // Batasi hanya 5 data
 
                                     // Persiapan data untuk Chart.js
                                     const labels = data.map(item => item.kbli_keterangan);
@@ -61,7 +61,7 @@
                                     // Membuat Chart menggunakan Chart.js
                                     const ctx = document.getElementById('kbliChart').getContext('2d');
                                     new Chart(ctx, {
-                                        type: 'doughnut', // Menggunakan type doughnut untuk doughnut chart
+                                        type: 'pie', // Menggunakan type doughnut untuk doughnut chart
                                         data: {
                                             labels: labels,
                                             datasets: [{
