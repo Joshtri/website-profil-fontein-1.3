@@ -1,5 +1,7 @@
 import * as umkmServices from '../repositories/umkm.repository.js';
 import * as pendudukServices from '../repositories/penduduk.repository.js';
+import { getAllKegiatan } from '../repositories/kegiatan.repository.js';
+ 
 
 
 //beranda
@@ -16,6 +18,8 @@ export const mainPage = async(req,res)=>{
     const totalMikro = await umkmServices.getTotalUmkmMikro();
     const totalKecil = await umkmServices.getTotalUmkmKecil();
 
+    const kegiatanData = await getAllKegiatan();
+
     try {
         res.render('index',{
             title,
@@ -25,7 +29,8 @@ export const mainPage = async(req,res)=>{
             totalPerempuan,
             totalMenengah,
             totalMikro,
-            totalKecil
+            totalKecil,
+            kegiatanData
         });
     } catch (error) {
         console.log(error);

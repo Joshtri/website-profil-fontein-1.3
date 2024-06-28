@@ -9,8 +9,8 @@ const enableDarkMode = () => {
   // 2. Update darkMode in localStorage
   localStorage.setItem('darkMode', 'enabled');
 
-  toggle.src = "/images/icons8-sun-96.png";
-  logo.src = "/images/dark_mode_logo_web_KELURAHAN_FONTEIN-removebg-preview.png"
+  toggle.src = "/images/icons8-sun-96.webp";
+  logo.src = "/images/dark_mode_logo_web_KELURAHAN_FONTEIN-removebg-preview.webp"
 }
 
 const disableDarkMode = () => {
@@ -19,8 +19,8 @@ const disableDarkMode = () => {
   // 2. Update darkMode in localStorage 
   localStorage.setItem('darkMode', null);
 
-  toggle.src = "/images/icons8-do-not-disturb-ios-96 (1).png"
-  logo.src = "/images/logo_web_KELURAHAN_FONTEIN-removebg-preview.png"
+  toggle.src = "/images/icons8-do-not-disturb-ios-96 (1).webp"
+  logo.src = "/images/logo_web_KELURAHAN_FONTEIN-removebg-preview.webp"
 }
  
 // If the user already visited and enabled darkMode

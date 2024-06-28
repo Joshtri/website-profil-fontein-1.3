@@ -13,9 +13,8 @@
     
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/all.min.js" integrity="sha512-8pHNiqTlsrRjVD4A/3va++W1sMbUHwWxxRPWNyVlql3T+Hgfd81Qc6FC5WMXDC+tSauxxzp1tgiAvSKFu1qIlA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"> -->
 
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
@@ -151,6 +150,50 @@
     
 } 
     </style>
+
+<style>
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: 200px; /* Set a fixed height */
+        object-fit: cover; /* Ensures the image covers the box while maintaining aspect ratio */
+        border-bottom: 1px solid #ddd;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .card-body {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .card-title {
+        margin: 0 0 10px;
+        font-size: 1.25em;
+        font-weight: bold;
+        text-align: start;
+    }
+
+    .card-text {
+        margin: 0 0 10px;
+        flex: 1;
+    }
+
+    .card-date {
+        font-size: 0.9em;
+        color: #999;
+    }
+</style>
     
     
     <header id="navbar-placeholder">
@@ -174,7 +217,7 @@
             <div class="container-fluid text-end">
                 <div class="numbers d-flex flex-md-row flex-wrap justify-content-center">
                     <div class="rectangle1">
-                        <a href="/data/dataumkm">
+                        <a href="/main_stats">
                         <!-- <i class="fa-solid fa-people-simple fa-6x"></i>                         -->
                         <img class="icons" src="/images/icons8-queue-96.webp" alt="">
                         
@@ -184,7 +227,7 @@
                         </a>
                     </div>
                     <div class="rectangle2">
-                        <a href="/data/datamikro">
+                        <a href="/mikro_stats">
                         <!-- <i class="fa-solid fa-shop fa-6x"></i> -->
                         <img class="icons" src="/images/icons8-shop-96.webp" alt="">
                        
@@ -194,7 +237,7 @@
                         </a>
                     </div>
                     <div class="rectangle3">
-                        <a href="/data/datakecil">
+                        <a href="/kecil_stats">
                         <!-- <i class="fa-solid fa-cart-shopping fa-6x"></i> -->
                         <img class="icons" src="/images/icons8-buying-96.webp" alt="">
                         
@@ -204,7 +247,7 @@
                         </a>
                     </div>
                     <div class="rectangle4">
-                        <a href="/data/datamenengah">
+                        <a href="/menengah_stats">
                         <!-- <i class="fa-solid fa-building fa-6x"></i> -->
                         <img class="icons" src="/images/icons8-building-96.webp" alt="">
                        
@@ -215,97 +258,139 @@
                     </div>
                 </div>
             </div>
-            <h5>Data Penduduk</h5>
-            <div class="container-fluid text-end">
-                <div class="numbers d-flex flex-md-row flex-wrap justify-content-center">
-                    <div class="rectangle5">
-                        <!-- <i class="fa-solid fa-people-simple fa-6x"></i>                         -->
-                        <img class="icons" src="/images/icons8-queue-96.webp" alt="">
-                        <h1><%= totalPenduduk %></h1>
-                        <p>Total Penduduk</p>
-                    </div>
-                    <div class="rectangle6">
-                        <a href="">
-                        <!-- <i class="fa-solid fa-shop fa-6x"></i> -->
-                        <img class="icons" src="/images/icons8-standing-man-96 (1).webp" alt="">
-                            <h1><%= totalLakiLaki %></h1>
-                        <p>Laki-Laki</p>
-                        </a>
-                    </div>
-                    <div class="rectangle7">
-                        <a href="">
-                        <!-- <i class="fa-solid fa-cart-shopping fa-6x"></i> -->
-                        <img class="icons" src="/images/icons8-woman-96 (1).webp" alt="">
+            <h3>Aktivitas Kelurahan Fontein</h3>
 
-                            <h1><%= totalPerempuan %></h1>
+            <section class="container-fluid">
+                <div class="row p-4">
+                    <% for(let i=0; i < kegiatanData.length; i++) { %>
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <img src="data:image/png;base64,<%= kegiatanData[i].foto_kegiatan %>" class="card-img-top" alt="Foto Kegiatan">
+                                <div class="card-body">
+                                    <p class="card-title"><%= kegiatanData[i].nama_kegiatan %></p>
 
-                        <p>Perempuan</p>
-                        </a>
+                                    <p class="card-date"><%= new Date(kegiatanData[i].tanggal_kegiatan).toLocaleString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) %></p>
+                                    <p class="card-text"><%= kegiatanData[i].deskripsi_kegiatan %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+            
+
+            
+                    <!-- Add more cards as needed -->
+                </div>
+            </section>
+                    
+
+            <!-- kosong sementara -->
+            <!-- <h3>Berita</h3> -->
+            <!-- CARD UNTUK SECTION BERITA TERKINI -->
+            <div id="berita-section" class="card mt-5">
+                <div class="card-body bg-light" id="sectionBerita">
+                <div class="card">
+                    <h1 class="font-title-costum text-center text-uppercase">berita terkini</h1>
+                    <div class="col-md-9 mx-auto">
+                    <p style="text-align: justify;">
+                        Kami menyediakan fitur <span class="fw-bold">"berita terkini"</span> bagi pengunjung website yang mengakses website profil Oetete. Dengan tujuan dapat meningkatkan literasi pengunjung website dan menambah wawasan mengenai informasi/berita yang dibaca.
+                    </p>
+                    <p >
+                        Berikut ini berita yang kami sediakan dengan berbagai jenis berita:
+                    </p>
+            
+                    <!-- JENIS KE  1 -->
+                    <div class="accordion mb-3" id="accordionExample1">
+                        <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <span class="fw-bolder fs-3">
+                                <i class="me-2 fa-solid fa-newspaper fa-beat-fade"></i>TOP NEWS
+                            </span>
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
+                            <div class="accordion-body">
+                            <div class="row justify-content-center" id="berita-container">
+                                <!-- all content for TOP NEWS -->
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- end JENIS 1 -->
+            
+                    <!-- JENIS KE  2 -->
+                    <div class="accordion mb-3" id="accordionExample2">
+                        <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            <span class="fw-bolder fs-3">
+                                <i class="me-2 fa-solid fa-film fa-beat-fade"></i>HIBURAN
+                            </span>
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample2">
+                            <div class="accordion-body">
+                            <div class="row justify-content-center" id="berita-hiburan-container">
+                                <!-- all content for HIBURAN -->
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- end JENIS 2 -->
+            
+                    <!-- JENIS KE  3 -->
+                    <div class="accordion mb-3" id="accordionExample3">
+                        <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            <span class="fw-bolder fs-3">
+                                <i class="me-2 fa-solid fa-scale-balanced fa-beat-fade" style="color: #36455e;"></i>
+                                HUKUM
+                            </span>
+                            </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample3">
+                            <div class="accordion-body">
+                            <div class="row justify-content-center" id="berita-hukum-container">
+                                <!-- all content for HUKUM -->
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- end JENIS 3 -->
+            
+                    <!-- Tambahkan lebih banyak item sesuai kebutuhan -->
                     </div>
                 </div>
+                </div>
             </div>
-            <h3>Publikasi Terkini</h3>
-            <div class="tabel">
-                <table id="example" class="table mt-5 mt-5 table-str table-bordered" style="width:95% ;margin-right: auto;margin-left: auto;">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center">No.</th>
-                            <th scope="col" class="text-center">Nama File</th>
-                            <th scope="col" class="text-center">Jenis File</th>
-                            <th scope="col" class="text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td scope="row" class="text-center">1</th>
-                            <td scope="row" class="text-center">Potensi Kelurahan Fontein</td>
-                            <td scope="row" class="text-center">PDF</td>
-                            <td scope="row" class="text-center">
-                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    Lihat
-                                </button>
-                                <!-- Modal -->
-                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">PDF</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                        <p><iframe src="https://drive.google.com/file/d/1uWDLQNAYKOSwKyFFSzk-vm2Y51RXfSKy/preview" width="100%" height="480" allow="autoplay"></iframe>
-                                        <p>Tekan Close untuk tutup</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">
-                                            <a href="https://drive.google.com/u/0/uc?id=1uWDLQNAYKOSwKyFFSzk-vm2Y51RXfSKy&export=download">Unduh</a></button>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary badge-pill"><a href="https://drive.google.com/u/0/uc?id=1uWDLQNAYKOSwKyFFSzk-vm2Y51RXfSKy&export=download">Unduh</a></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                           
-            </div>
-            <br> <br>
+           
+            <br><br>
         </section>
     </main>
     
     
     <footer id="footer-placeholder">
-          <!-- already imported with js -->
-          <%-include('partials/footer'); -%>
-        </footer>
+        <!-- already imported with js -->
+        <%-include('partials/footer'); -%>
+    </footer>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
         <script src="/javascripts/document.js"></script>
         <script src="/javascripts/darkmode.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+        <!-- <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> -->
+        <!-- <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script> -->
+        <script src="/javascripts/rssHiburan.js"></script>
+        <script src="/javascripts/rssHukum.js"></script>
+        <script src="/javascripts/rssKriminal.js"></script>
     </body>
 </html>
