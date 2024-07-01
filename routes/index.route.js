@@ -14,6 +14,7 @@ router.get('/profil_umkm', mainController.profilUmkmPage);
 router.get('/struktur_pemerintahan', mainController.strukturPemPage);
 router.get('/visi_misi', mainController.visiMisiPage);
 
+router.get('/publikasi', mainController.publikasiPage);
 
 
 
